@@ -27,7 +27,7 @@ namespace MedCore_Router.Services
         {
             try
             {
-                if(Config.GetValue<bool>("EnableTrace"))
+                if(Config.EnableTrace)
                 {
                     var context = contextAccessor.HttpContext;
                     var item = new RequestTraceItem();
@@ -125,7 +125,8 @@ StackTrace: {ex.StackTrace}");
         {
             get
             {
-                var value = Config.GetValue("RouterBaseUrl");
+                var value = Config.BaseUrl;
+                
                 if(String.IsNullOrEmpty(value))
                     return "http://localhost:6000/";
                 else

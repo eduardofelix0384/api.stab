@@ -401,7 +401,7 @@ Url não pode ser resolvida
         {
             get
             {
-                var text = Config.GetValue("Retry502Limit");
+                var text = "";
 
                 if(int.TryParse(text, out int result))
                     return result;
@@ -414,7 +414,7 @@ Url não pode ser resolvida
         {
             get
             {
-                var value = Config.GetValue("RouterBaseUrl");
+                var value = Config.BaseUrl;
                 if(String.IsNullOrEmpty(value))
                     return "http://localhost:6000/";
                 else

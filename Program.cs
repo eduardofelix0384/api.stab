@@ -13,6 +13,17 @@ namespace api.stab
     {
         public static void Main(string[] args)
         {
+            Console.WriteLine(@"
+             _       _        _     
+            (_)     | |      | |    
+  __ _ _ __  _   ___| |_ __ _| |__  
+ / _` | '_ \| | / __| __/ _` | '_ \ 
+| (_| | |_) | |_\__ \ || (_| | |_) |
+ \__,_| .__/|_(_)___/\__\__,_|_.__/ 
+      | |                           
+      |_|                           
+");
+
             CreateHostBuilder(args).Build().Run();
         }
 

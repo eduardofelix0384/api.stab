@@ -12,7 +12,7 @@ namespace api.stab.Tools
         private static IServer Server { get; set; }
         private static TimeSpan DefaultTimeout { get; set; }
 
-        private static double DefaultTimeoutDaysValue = Convert.ToInt64(Config.GetValue("RedisDefaultDaysTimeout"));
+        private static double DefaultTimeoutDaysValue = Convert.ToInt64(7);
 
         static RedisCacheManager()
         {
@@ -34,7 +34,7 @@ namespace api.stab.Tools
         {
             try
             {
-                var timeoutConnection = Convert.ToInt32(Config.GetValue("RedisCacheConnectionTimeout"));
+                var timeoutConnection = Convert.ToInt32(60);
 
                 var configurationOptions = new ConfigurationOptions()
                 {
@@ -42,7 +42,7 @@ namespace api.stab.Tools
                     SyncTimeout = timeoutConnection,
                     EndPoints =
                 {
-                    { Config.GetValue("RedisCacheConnection"), Convert.ToInt32(Config.GetValue("RedisCacheConnectionPort")) }
+                    { Config.RedisHost, Config.RedisPort }
                 }
                 };
 

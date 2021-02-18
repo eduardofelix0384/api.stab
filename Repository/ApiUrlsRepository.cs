@@ -35,8 +35,8 @@ namespace api.stab.Repository
 
         static IList<ApiUrl> GetUrlsFromDB()
         {
-            var client = new MongoClient(Config.ApiRouterConnectionString);
-            var db = client.GetDatabase(Config.GetValue("ApiRouterDatabaseName"));
+            var client = new MongoClient(Config.DefaultConnectionString);
+            var db = client.GetDatabase(Config.DefaultDatabaseName);
             var routes = db.GetCollection<ApiUrl>("ApiUrls");
             return routes.Aggregate().ToList();
         }
@@ -45,7 +45,7 @@ namespace api.stab.Repository
         {
             get
             {
-                return Config.GetValue<bool>("CacheEnabled");
+                return Config.EnableDataCache;
             }
         }
     }

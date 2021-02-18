@@ -34,7 +34,7 @@ namespace api.stab.Middlewares
             if(url.IndexOf("api.stab/health-check", StringComparison.InvariantCultureIgnoreCase) != -1)
             {
                 context.Response.StatusCode = 200;
-                await context.Response.WriteAsync("It's Working");
+                await context.Response.WriteAsync("api.stab is working!");
             }
             else
                 await _next.Invoke(context);

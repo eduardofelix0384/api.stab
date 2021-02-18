@@ -34,7 +34,7 @@ namespace api.stab
 
         public static void Register(string text)
         {
-            if(!EnableLog)   
+            if(!Config.EnableLog)   
                 return;
 
             Console.WriteLine(text);
@@ -49,19 +49,6 @@ namespace api.stab
                 }
             }
             catch { }
-        }
-
-        static bool EnableLog
-        {
-            get
-            {
-                var text = Config.GetValue("EnableLog");
-
-                if(bool.TryParse(text, out bool result))
-                    return result;
-                else
-                    return false;
-            }
         }
     }
 }

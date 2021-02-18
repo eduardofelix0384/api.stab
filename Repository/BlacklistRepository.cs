@@ -36,8 +36,8 @@ namespace api.stab.Repository
 
         static async Task<IList<Blacklist>> GetItemsFromDB()
         {
-            var client = new MongoClient(Config.ApiRouterConnectionString);
-            var db = client.GetDatabase(Config.GetValue("ApiRouterDatabaseName"));
+            var client = new MongoClient(Config.DefaultConnectionString);
+            var db = client.GetDatabase(Config.DefaultDatabaseName);
             var routes = db.GetCollection<Blacklist>("Blacklist");
             return await routes.Aggregate().ToListAsync();
         }
@@ -46,7 +46,7 @@ namespace api.stab.Repository
         {
             get
             {
-                return Config.GetValue<bool>("CacheEnabled");
+                return Config.EnableDataCache;
             }
         }
     }

@@ -11,8 +11,8 @@ namespace api.stab.Repository
     {
         public static async Task Insert(RequestTraceItem item)
         {
-            var client = new MongoClient(Config.RequestTraceConnectionString);
-            var db = client.GetDatabase(Config.GetValue("RequestTraceDatabaseName"));
+            var client = new MongoClient(Config.TraceConnectionString);
+            var db = client.GetDatabase(Config.TraceDatabaseName);
             var collection = db.GetCollection<RequestTraceItem>($"Requests_{DateTime.Now.ToString("yyyyMMdd")}");
             var taskInsert = collection.InsertOneAsync(item);
             var taskDrop = db.DropCollectionAsync($"Requests_{DateTime.Now.AddDays(-7).ToString("yyyyMMdd")}");
